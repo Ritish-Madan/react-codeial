@@ -18,7 +18,8 @@ export default function auth(state = initialAuthState, action){
             return{
                 ...state,
                 user: action.user,
-                isLoggedin: true
+                isLoggedin: true,
+                inProgress: false
             }
         case LOGIN_FAIL:
             return{

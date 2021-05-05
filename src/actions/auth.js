@@ -38,7 +38,7 @@ export function login(email, password){
             console.log('data', data); 
             if(data.success){
                 // Dispatch action to save user
-                // dispatch(loginSuccess())
+                dispatch(loginSuccess(data.data.user));
                 return;
             }
 

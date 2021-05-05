@@ -20,3 +20,5 @@ export function updatePosts(posts) {
     posts,
   };
 }
+
+
