@@ -1,13 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {logout} from '../actions/auth';
+import React, { Component } from 'react';
 
-
-function Navbar(props) {
-  const {user, isLoggedin} = props.auth;
-  console.log(user);
-  return (
-    <nav className="nav">
+class Navbar extends Component {
+  logout(){
+    localStorage.removeItem('token');
+    this.props.dispatch(logout());
+  }
+  render() {
+    const{user, isLoggedin} = this.props.auth;
+    return (
+      <nav className="nav">
       <div className="left-div">
         <Link to="/">
           <img
@@ -54,8 +58,8 @@ function Navbar(props) {
             <span>{user.name}</span>
             <div className="nav-links">
               <ul>
-                <li>
-                  <Link to="/logout">Log out</Link>
+                <li onClick = {this.logout.bind(this)}>
+                  Log Out
                 </li>
               </ul>
             </div>
@@ -74,7 +78,8 @@ function Navbar(props) {
         }
       </div>
     </nav>
-  );
+    );
+  }
 }
 
 function mapStateToProps(state){

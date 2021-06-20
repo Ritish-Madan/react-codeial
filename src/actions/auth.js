@@ -1,5 +1,5 @@
 import { APIUrls } from "../helpers/urls";
-import { LOGIN_FAIL, LOGIN_START, LOGIN_SUCCESS, SIGNUP_FAIL, SIGNUP_START, SIGNUP_SUCCESS } from "./actionTypes";
+import { AUTHENTICATE_USER, LOGIN_FAIL, LOGIN_START, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAIL, SIGNUP_START, SIGNUP_SUCCESS } from "./actionTypes";
 import {getFormBody} from '../helpers/utils';
 
 export function startLogin(){
@@ -91,5 +91,18 @@ export function signup(email, password, name, confirm_password){
 
         dispatch(signup_failed(data.message));
         })
+    }
+}
+
+export function authenticate(user){
+    return{
+        type: AUTHENTICATE_USER,
+        user
+    }
+}
+
+export function logout(){
+    return{
+        type: LOGOUT
     }
 }

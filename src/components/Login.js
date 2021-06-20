@@ -32,6 +32,7 @@ class Login extends Component {
     }
   }
   render() {
+    // console.log(this.props)
     const{error, inProgress} = this.props.auth;
     return (
       <form className="login-form">
